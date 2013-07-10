@@ -1,0 +1,22 @@
+package client;
+
+public class ClientPrompt {
+
+	public void request()
+	{
+		//ask user if they would like to add or subtract
+		//if add
+			//ans =server.add(prompt(), prompt());
+		//if subtract
+			//ans = server.subtract(prompt(), prompt());
+		//print answer
+	}
+
+	
+	private int prompt()
+	{
+		int a;
+		//a = scan
+		return a;
+	}
+}

@@ -1,0 +1,15 @@
+package server;
+
+public class MathProtocol {
+	private static final int SENTQUERY = 0;
+	private static final int ADDITION = 1;
+	private static final int SUBTRACTION = 2;
+	private static final int ANSWER = 3;
+	
+	public String processInput(String in)
+	{
+		String out = null;
+		
+		if
+	}
+}
