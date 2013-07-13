@@ -1,0 +1,15 @@
+package edu.neumont.csc380;
+
+public class Driver {
+	public static void main(String[] args)
+	{
+		Class c = null;
+		try {
+			c = Class.forName("edu.neumont.csc380.ReflectionActivity");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(c.getName());
+	}
+}

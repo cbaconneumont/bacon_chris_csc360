@@ -1,51 +1,112 @@
 package server;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import server.utility.StringParser;
+
 
 public class MathProtocol {
 	private static final int WAITING = 0;
 	private static final int RECIEVEDQUERY = 1;
-	private static final int ADDITION = 2;
-	private static final int SUBTRACTION = 3;
+	private static final int PROCESSREQUEST = 2;
+	
+	private String LogicUsage = "";
+	private MathLogic Logic = new MathLogic();
 	
 	private int state = WAITING;
 	
-	public String processInput(String in)
+	public String processInput(String in) throws ClassNotFoundException
 	{
 		String out = null;
 		
+		Class logic = Class.forName("server.MathLogic");
+		Method[] methods = logic.getDeclaredMethods();
+		String output = "";
 		if(state == WAITING)
 		{
-			out = "Would you like to add or subtract?";
+			output = "What method would you like to call? Type in the name of the method you would like to choose from the following list: ";
+			
+			for(Method current : methods)
+			{
+				output += current.getName()+ ", ";
+				
+			}
+			output = output.substring(0, output.length()-2);
+			out = output;
 			state = RECIEVEDQUERY;
 		}
 		else if (state == RECIEVEDQUERY)
 		{
-			if(in.equalsIgnoreCase("add"))
+			
+			LogicUsage = in;
+			Method requested = null;
+			for(Method m : methods)
 			{
-				out = "Enter the two integers, seperated by a comma. (ex: 12,13)";
-				state = ADDITION;
+				if(m.getName().equals(LogicUsage))
+				{
+					requested = m;
+					break;
+				}
 			}
-			else if (in.equalsIgnoreCase("subtract"))
+			if(requested == null)
 			{
-				out = "Enter the two integers, seperated by a comma. (ex: 12,13)";
-				state = SUBTRACTION;
+				out = "The method your requested does not exist or was spelled wrong. The server is restarting.";
+				LogicUsage = "";
+				state = WAITING;
 			}
+			else
+			{
+				Class[] params = requested.getParameterTypes();
+				output = "The method requires the following as parameters (please enter them separated by commas [eg 12, 13]): ";
+				for(Class param : params)
+				{
+					output += param.getName() + ", ";
+				}
+				output = output.substring(0, output.length() - 2);
+				out = output;
+			}
+			state = PROCESSREQUEST;
 		}
-		else if (state == ADDITION)
+		else if (state == PROCESSREQUEST)
 		{
-			String[] parts = in.split(",");
-			int a = Integer.parseInt(parts[0]);
-			int b = Integer.parseInt(parts[1]);
-			out = "" + MathLogic.add(a, b);
+			String[] inputs = in.split(",");
+			
+			//for each input, put it into a spot on the obj array
+			Object[] args = new Object[inputs.length];
+			for(int i = 0; i < args.length; i++)
+			{
+				args[i] = StringParser.parseFromString(inputs[i]);
+			}
+			
+			Method requested = null;
+			for(Method m : methods)
+			{
+				if(m.getName().equals(LogicUsage))
+				{
+					requested = m;
+					break;
+				}
+			}
+			 
+			try {
+				output = "" + requested.invoke(Logic, args) + ". Hit enter to continue.";
+			} catch (IllegalAccessException | IllegalArgumentException
+					| InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				output = "The parameters were given incorrectly. Please hit enter to try again.";
+			}
+			
+			//invoke the method using each param
+			//set out = invokation response
+			out = output;
 			state = WAITING;
 		}
-		else if (state == SUBTRACTION)
+		if(out == null)
 		{
-			String[] parts = in.split(",");
-			int a = Integer.parseInt(parts[0]);
-			int b = Integer.parseInt(parts[1]);
-			out = "" + MathLogic.subtract(a, b);
+			out = "Restarting. Please hit enter.";
 			state = WAITING;
+			
 		}
 		return out;
 	}

@@ -44,7 +44,7 @@ public class MathServerThread extends Thread {
 	        
 	        socket.close();
 		}
-		catch (IOException e) 
+		catch (IOException | ClassNotFoundException e) 
 		{
 			e.printStackTrace();
 		}

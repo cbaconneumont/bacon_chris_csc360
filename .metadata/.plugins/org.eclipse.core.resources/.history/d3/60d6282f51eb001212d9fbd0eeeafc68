@@ -1,0 +1,9 @@
+package server.utility;
+
+public class StringParser {
+	public static Object parseFromString(String input)
+	{
+		//returns the value as an int, double, string, char, boolean, as it is as supposed to be
+		return null;
+	}
+}

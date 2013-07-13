@@ -1,0 +1,49 @@
+package server;
+
+import java.lang.reflect.Method;
+
+
+public class MathProtocol {
+	private static final int WAITING = 0;
+	private static final int RECIEVEDQUERY = 1;
+	private static final int PROCESSREQUEST = 2;
+	
+	private String LogicUsage = "";
+	
+	private int state = WAITING;
+	
+	public String processInput(String in) throws ClassNotFoundException
+	{
+		String out = null;
+		
+		if(state == WAITING)
+		{
+			out = "What method would you like to call? Type in the name of the method you would like to choose from the following list:";
+			Class logic = Class.forName("server.MathLogic");
+			Method[] methods = logic.getDeclaredMethods();
+			for(Method current : methods)
+			{
+				System.out.println(current.toString());
+			}
+			
+			state = RECIEVEDQUERY;
+		}
+		else if (state == RECIEVEDQUERY)
+		{
+			//in = the input
+			//read in the method and save it as a string
+			//out = "the method requires (list params) as parameters. Please enter these, separated by commas (eg '12,13')
+			state = PROCESSREQUEST;
+		}
+		else if (state == PROCESSREQUEST)
+		{
+			//split in on commas
+			//invoke the method using each param
+			//set out = invokation response
+			
+			state = WAITING;
+		}
+		
+		return out;
+	}
+}
