@@ -65,5 +65,7 @@ public class Driver {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println(Math.abs('q'));
 	}
 }

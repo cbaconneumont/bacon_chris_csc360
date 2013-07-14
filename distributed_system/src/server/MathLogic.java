@@ -12,4 +12,9 @@ public class MathLogic {
 		return a-b;
 	}
 	
+	public static double addMoreThanTwo(double a, double b, double c)
+	{
+		return a+b+c;
+	}
+	
 }

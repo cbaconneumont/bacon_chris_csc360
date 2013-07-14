@@ -8,42 +8,75 @@ import server.utility.StringParser;
 
 public class MathProtocol {
 	private static final int WAITING = 0;
-	private static final int RECIEVEDQUERY = 1;
-	private static final int PROCESSREQUEST = 2;
+	private static final int REQUEST_METHOD_NAME = 1;
+	private static final int REQUEST_PARAMETERS = 2;
+	private static final int INVOKE_METHOD = 3;
 	
-	private String LogicUsage = "";
-	private MathLogic Logic = new MathLogic();
+	//holds onto whatever methodname they called before this
+	private String MethodName = "";
+	private Object CurrentInstance = null;
+	private Class CurrentClass = null;
+	//private MathLogic Logic = new MathLogic();
 	
-	private int state = WAITING;
+	private int state = WAITING; //default state when the server starts
 	
-	public String processInput(String in) throws ClassNotFoundException
+	public String processInput(String in)
 	{
 		String out = null;
-		
-		Class logic = Class.forName("server.MathLogic");
-		Method[] methods = logic.getDeclaredMethods();
 		String output = "";
-		if(state == WAITING)
+		
+		//TODO: switch states around:
+		/*
+		 * WAITING: ask them which class they would like to use, using fully-qualified names. show them a list of recently accessed
+		 * REQUEST_METHOD_NAME: ask them which method they would like to use. show them a list of every method in that class
+		 * REQUEST_PARAMETERS: show them the parameters types required, and in the correct order (double, double, string for example). request them to fill these in
+		 * INVOKE_METHOD: call the method using the given parameters, return out as whatever the answer/return value is
+		 */
+		if(state == WAITING) //in = null or is just empty to move forward
 		{
-			output = "What method would you like to call? Type in the name of the method you would like to choose from the following list: ";
+			MethodName = "";
+			CurrentInstance = null;
+			CurrentClass = null;
+			out = "What class would you like to use? Use the fully-qualified name (eg test.java3.notmathlogic.TestClass)";
+			state = REQUEST_METHOD_NAME;
+		}
+		else if(state == REQUEST_METHOD_NAME) //in = classname, find that class
+		{
+			try {
+				CurrentClass = Class.forName(in);
+				CurrentInstance = CurrentClass.newInstance();
+			} catch (ClassNotFoundException e) {
+				output = "Class was not found. Hit enter to try again.";
+				state = WAITING;
+				return output;
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-			for(Method current : methods)
+			output = "What method would you like to call? Type in the name of the method you would like to choose from the following list: ";
+			Method[] methods = CurrentClass.getDeclaredMethods();
+			for(Method	 current : methods)
 			{
 				output += current.getName()+ ", ";
 				
 			}
 			output = output.substring(0, output.length()-2);
 			out = output;
-			state = RECIEVEDQUERY;
+			state = REQUEST_PARAMETERS;
 		}
-		else if (state == RECIEVEDQUERY)
+		else if (state == REQUEST_PARAMETERS) //in = methodname, find that method
 		{
 			
-			LogicUsage = in;
+			MethodName = in;
 			Method requested = null;
+			Method[] methods = CurrentClass.getDeclaredMethods();
 			for(Method m : methods)
 			{
-				if(m.getName().equals(LogicUsage))
+				if(m.getName().equals(MethodName))
 				{
 					requested = m;
 					break;
@@ -52,7 +85,7 @@ public class MathProtocol {
 			if(requested == null)
 			{
 				out = "The method your requested does not exist or was spelled wrong. The server is restarting.";
-				LogicUsage = "";
+				MethodName = "";
 				state = WAITING;
 			}
 			else
@@ -66,23 +99,23 @@ public class MathProtocol {
 				output = output.substring(0, output.length() - 2);
 				out = output;
 			}
-			state = PROCESSREQUEST;
+			state = INVOKE_METHOD;
 		}
-		else if (state == PROCESSREQUEST)
+		else if (state == INVOKE_METHOD) //in = parameters, delimited by commas
 		{
 			String[] inputs = in.split(",");
 			
-			//for each input, put it into a spot on the obj array
 			Object[] args = new Object[inputs.length];
 			for(int i = 0; i < args.length; i++)
 			{
 				args[i] = StringParser.parseFromString(inputs[i]);
 			}
 			
+			Method[] methods = CurrentClass.getDeclaredMethods();
 			Method requested = null;
 			for(Method m : methods)
 			{
-				if(m.getName().equals(LogicUsage))
+				if(m.getName().equals(MethodName))
 				{
 					requested = m;
 					break;
@@ -90,15 +123,12 @@ public class MathProtocol {
 			}
 			 
 			try {
-				output = "" + requested.invoke(Logic, args) + ". Hit enter to continue.";
+				output = "" + requested.invoke(CurrentInstance, args) + ". Hit enter to continue.";
 			} catch (IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e) {
-				// TODO Auto-generated catch block
 				output = "The parameters were given incorrectly. Please hit enter to try again.";
 			}
 			
-			//invoke the method using each param
-			//set out = invokation response
 			out = output;
 			state = WAITING;
 		}
@@ -106,7 +136,6 @@ public class MathProtocol {
 		{
 			out = "Restarting. Please hit enter.";
 			state = WAITING;
-			
 		}
 		return out;
 	}

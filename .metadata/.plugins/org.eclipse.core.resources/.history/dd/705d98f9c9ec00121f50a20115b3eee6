@@ -1,0 +1,123 @@
+package server;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import server.utility.StringParser;
+
+
+public class MathProtocol {
+	private static final int WAITING = 0;
+	//TODO: uncomment lol - 
+	//private static final int REQUEST_METHOD_NAME = 1;
+	private static final int REQUEST_PARAMETERS = 2;
+	private static final int INVOKE_METHOD = 3;
+	
+	private String MethodName = "";
+	//TODO: uncomment lol - 
+	//private Object CurrentClass = null;
+	private MathLogic Logic = new MathLogic();
+	
+	private int state = WAITING; //default state when the server starts
+	
+	public String processInput(String in) throws ClassNotFoundException
+	{
+		String out = null;
+		
+		//TODO: change this to whatever class they request (use the name they supplied in in)
+		//TODO: make this inside of the below if statement after they supply the name in the first place
+		Class accessedClass = Class.forName("server.MathLogic");
+		//TODO: 
+		Method[] methods = accessedClass.getDeclaredMethods();
+		String output = "";
+		
+		//TODO: switch states around:
+		/*
+		 * WAITING: ask them which class they would like to use, using fully-qualified names. show them a list of recently accessed
+		 * RECIEVEDCLASSNAME: ask them which method they would like to use
+		 */
+		if(state == WAITING)
+		{
+			output = "What method would you like to call? Type in the name of the method you would like to choose from the following list: ";
+			
+			for(Method current : methods)
+			{
+				output += current.getName()+ ", ";
+				
+			}
+			output = output.substring(0, output.length()-2);
+			out = output;
+			state = REQUEST_PARAMETERS;
+		}
+		else if (state == REQUEST_PARAMETERS)
+		{
+			
+			MethodName = in;
+			Method requested = null;
+			for(Method m : methods)
+			{
+				if(m.getName().equals(MethodName))
+				{
+					requested = m;
+					break;
+				}
+			}
+			if(requested == null)
+			{
+				out = "The method your requested does not exist or was spelled wrong. The server is restarting.";
+				MethodName = "";
+				state = WAITING;
+			}
+			else
+			{
+				Class[] params = requested.getParameterTypes();
+				output = "The method requires the following as parameters (please enter them separated by commas [eg 12, 13]): ";
+				for(Class param : params)
+				{
+					output += param.getName() + ", ";
+				}
+				output = output.substring(0, output.length() - 2);
+				out = output;
+			}
+			state = INVOKE_METHOD;
+		}
+		else if (state == INVOKE_METHOD)
+		{
+			String[] inputs = in.split(",");
+			
+			Object[] args = new Object[inputs.length];
+			for(int i = 0; i < args.length; i++)
+			{
+				args[i] = StringParser.parseFromString(inputs[i]);
+			}
+			
+			Method requested = null;
+			for(Method m : methods)
+			{
+				if(m.getName().equals(MethodName))
+				{
+					requested = m;
+					break;
+				}
+			}
+			 
+			try {
+				//TODO: switch Logic into whichever class they choose
+				output = "" + requested.invoke(Logic, args) + ". Hit enter to continue.";
+			} catch (IllegalAccessException | IllegalArgumentException
+					| InvocationTargetException e) {
+				output = "The parameters were given incorrectly. Please hit enter to try again.";
+			}
+			
+			out = output;
+			state = WAITING;
+		}
+		if(out == null)
+		{
+			out = "Restarting. Please hit enter.";
+			state = WAITING;
+			
+		}
+		return out;
+	}
+}
