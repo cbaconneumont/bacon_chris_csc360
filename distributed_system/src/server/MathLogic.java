@@ -1,6 +1,11 @@
 package server;
 
 public class MathLogic {
+	
+	public MathLogic()
+	{
+		
+	}
 
 	public static double add(double a, double b)
 	{
@@ -15,6 +20,5 @@ public class MathLogic {
 	public static double addMoreThanTwo(double a, double b, double c)
 	{
 		return a+b+c;
-	}
-	
+	}	
 }

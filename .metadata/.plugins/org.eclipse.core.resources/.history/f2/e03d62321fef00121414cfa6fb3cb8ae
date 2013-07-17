@@ -1,0 +1,5 @@
+package server.utility;
+
+public enum ProtocolStates {
+	Waiting, PickClass, CtorClass, PickMethod, InvokeMethod
+}

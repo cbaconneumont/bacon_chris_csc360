@@ -1,7 +1,9 @@
 package server;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 import server.utility.StringParser;
 
@@ -9,14 +11,15 @@ import server.utility.StringParser;
 public class MathProtocol {
 	private static final int WAITING = 0;
 	private static final int REQUEST_METHOD_NAME = 1;
-	private static final int REQUEST_PARAMETERS = 2;
-	private static final int INVOKE_METHOD = 3;
+	private static final int GET_OBJECT_PARAMS = 2;
+	private static final int CREATE_CLASS = 3;
+	private static final int REQUEST_PARAMETERS = 4;
+	private static final int INVOKE_METHOD = 5;
 	
-	//holds onto whatever methodname they called before this
 	private String MethodName = "";
 	private Object CurrentInstance = null;
 	private Class CurrentClass = null;
-	//private MathLogic Logic = new MathLogic();
+	private ArrayList<Object> params;
 	
 	private int state = WAITING; //default state when the server starts
 	
@@ -25,37 +28,82 @@ public class MathProtocol {
 		String out = null;
 		String output = "";
 		
-		//TODO: switch states around:
-		/*
-		 * WAITING: ask them which class they would like to use, using fully-qualified names. show them a list of recently accessed
-		 * REQUEST_METHOD_NAME: ask them which method they would like to use. show them a list of every method in that class
-		 * REQUEST_PARAMETERS: show them the parameters types required, and in the correct order (double, double, string for example). request them to fill these in
-		 * INVOKE_METHOD: call the method using the given parameters, return out as whatever the answer/return value is
-		 */
 		if(state == WAITING) //in = null or is just empty to move forward
 		{
 			MethodName = "";
 			CurrentInstance = null;
 			CurrentClass = null;
 			out = "What class would you like to use? Use the fully-qualified name (eg test.java3.notmathlogic.TestClass)";
-			state = REQUEST_METHOD_NAME;
+			state = GET_OBJECT_PARAMS;
 		}
-		else if(state == REQUEST_METHOD_NAME) //in = classname, find that class
+		else if(state == GET_OBJECT_PARAMS) //in = classname, find that class
 		{
 			try {
 				CurrentClass = Class.forName(in);
-				CurrentInstance = CurrentClass.newInstance();
+				//CurrentInstance = CurrentClass.newInstance();
 			} catch (ClassNotFoundException e) {
 				output = "Class was not found. Hit enter to try again.";
 				state = WAITING;
 				return output;
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+			
+			output = "Class found. The constructor requires the following parameters: ";
+			Constructor requested = CurrentClass.getConstructors()[0];
+			Class[] params = requested.getParameterTypes();
+			for(Class param : params)
+			{
+				output += param.getName() + ", ";
+			}
+			if(output.endsWith(", "))
+			{
+				output = output.substring(0, output.length() - 2);
+				output += ". Enter semicolons between different paramaters. Write new objects in the form [new edu.csc380.TestClass(12,\"somestringvalue\");14] without the brackets. (for example, if you were trying to use a class called \'edu.MathLogic\' and the MathLogic constructor took in a Logic object and an int, and the logic constructor needed a boolean as an input, the input string would looke like \"new Logic(true);16\"";
+				state = CREATE_CLASS;
+			}
+			else
+			{
+				output += "None! Hit enter to continue.";
+				state = REQUEST_METHOD_NAME;
+			}
+			out = output;
+		}
+		else if(state == CREATE_CLASS)
+		{
+			//in = string used to determine the shit to make the class
+			
+			String[] diffParamsAsStrings = in.split(";");
+			Object[] paramsForCtor = new Object[diffParamsAsStrings.length];
+			for(int i = 0; i< paramsForCtor.length; i++)
+			{
+				try {
+					paramsForCtor[i] = StringParser.parseFromString(diffParamsAsStrings[i]);
+				} catch (ClassNotFoundException | InstantiationException
+						| IllegalAccessException | IllegalArgumentException
+						| InvocationTargetException | SecurityException e) {
+					// TODO Auto-generated catch block
+					out = "An error occurred during class creation.";
+					state = WAITING;
+					return out;
+				}
+			}
+			try {
+				CurrentInstance = CurrentClass.getConstructors()[0].newInstance(paramsForCtor);
+			} catch (InstantiationException | IllegalAccessException
+					| IllegalArgumentException | InvocationTargetException
+					| SecurityException e) {
+				// TODO Auto-generated catch block
+				out = "An error occurred during class creation.";
+				state = WAITING;
+				return out;
+			}
+			out = "Instance created successfully. Hit enter to continue";
+			state = REQUEST_METHOD_NAME;
+		}
+		else if(state == REQUEST_METHOD_NAME )
+		{
+			
+			
+			
 			
 			output = "What method would you like to call? Type in the name of the method you would like to choose from the following list: ";
 			Method[] methods = CurrentClass.getDeclaredMethods();
@@ -87,6 +135,7 @@ public class MathProtocol {
 				out = "The method your requested does not exist or was spelled wrong. The server is restarting.";
 				MethodName = "";
 				state = WAITING;
+				return out;
 			}
 			else
 			{
@@ -106,9 +155,20 @@ public class MathProtocol {
 			String[] inputs = in.split(",");
 			
 			Object[] args = new Object[inputs.length];
+			
+			
 			for(int i = 0; i < args.length; i++)
 			{
-				args[i] = StringParser.parseFromString(inputs[i]);
+				try {
+					args[i] = StringParser.parseFromString(inputs[i]);
+				} catch (ClassNotFoundException | InstantiationException
+						| IllegalAccessException | IllegalArgumentException
+						| InvocationTargetException | SecurityException e) {
+					// TODO Auto-generated catch block
+					out = "An error occurred during method invokation.";
+					state = WAITING;
+					return out;
+				}
 			}
 			
 			Method[] methods = CurrentClass.getDeclaredMethods();
@@ -139,4 +199,7 @@ public class MathProtocol {
 		}
 		return out;
 	}
+	
+
+	
 }

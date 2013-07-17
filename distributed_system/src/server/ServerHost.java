@@ -11,7 +11,6 @@ public class ServerHost {
 		try {
 			serv.RunServer();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

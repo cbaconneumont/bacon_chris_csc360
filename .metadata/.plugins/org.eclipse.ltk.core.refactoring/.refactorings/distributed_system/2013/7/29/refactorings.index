@@ -5,3 +5,6 @@
 1373835442040	Rename field 'REQUESTPARAMETERS'
 1373835638621	Rename local variable 'logic'
 1373837432759	Rename field 'CurrentClass'
+1374077587129	Rename field 'REQUEST_PARAMETERS'
+1374077806274	Rename field 'GET_CTOR_PARAMS'
+1374092804384	Rename type 'ProtocolStates'

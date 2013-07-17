@@ -1,9 +1,13 @@
 package test.java3.notmathlogic;
 
-public class TestClass {
+import server.MathLogic;
 
-	public String MethodOne(boolean bool, int i, double d)
+public class TestClass {
+	
+	public TestClass(boolean bool) {}
+	
+	public String MethodOne(int i, double d, Logic l)
 	{
-		return "" + bool + " " + i + " " + d;
+		return "It worked!";
 	}
 }

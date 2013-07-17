@@ -8,11 +8,13 @@
 <fullyQualifiedTypeName name="javax.sound.midi.Receiver"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.lang.Class"/>
-<fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
 <fullyQualifiedTypeName name="edu.neumont.csc380.ReflectionActivity"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Field"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Method"/>
 <fullyQualifiedTypeName name="server.MathLogic"/>
 <fullyQualifiedTypeName name="server.utility.StringParser"/>
 <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Constructor"/>
+<fullyQualifiedTypeName name="server.utility.ProtocolState"/>
 </qualifiedTypeNameHistroy>

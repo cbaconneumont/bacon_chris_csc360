@@ -1,0 +1,15 @@
+package test.java3.notmathlogic;
+
+import server.MathLogic;
+
+public class TestClass {
+
+	public TestClass(MathLogic ml, MathLogic ml2)
+	{
+	}
+	
+	public String MethodOne(boolean bool, int i, double d)
+	{
+		return "" + bool + " " + i + " " + d;
+	}
+}
