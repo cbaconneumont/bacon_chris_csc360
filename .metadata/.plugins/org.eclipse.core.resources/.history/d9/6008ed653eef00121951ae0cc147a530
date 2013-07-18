@@ -63,13 +63,7 @@ public class MathProtocol {
 			else
 			{
 				output += "None! Hit enter to continue.";
-				try {
-					CurrentInstance = CurrentClass.newInstance();
-				} catch (InstantiationException | IllegalAccessException e) {
-					out = "An error occurred during class creation.";
-					state = WAITING;
-					return out;
-				}
+				CurrentInstance = CurrentClass.newInstance();
 				state = REQUEST_METHOD_NAME;
 			}
 			out = output;

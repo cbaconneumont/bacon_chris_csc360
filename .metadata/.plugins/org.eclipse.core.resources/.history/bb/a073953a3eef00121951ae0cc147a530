@@ -63,13 +63,6 @@ public class MathProtocol {
 			else
 			{
 				output += "None! Hit enter to continue.";
-				try {
-					CurrentInstance = CurrentClass.newInstance();
-				} catch (InstantiationException | IllegalAccessException e) {
-					out = "An error occurred during class creation.";
-					state = WAITING;
-					return out;
-				}
 				state = REQUEST_METHOD_NAME;
 			}
 			out = output;
@@ -95,7 +88,14 @@ public class MathProtocol {
 			}
 				
 			try {
+				if(paramsForCtor.length == 0)
+				{
+					CurrentInstance = CurrentClass.newInstance();
+				}
+				else 
+				{
 					CurrentInstance = CurrentClass.getConstructors()[0].newInstance(paramsForCtor);
+				}
 			} catch (InstantiationException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException
 					| SecurityException e) {

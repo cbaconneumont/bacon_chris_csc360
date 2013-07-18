@@ -63,13 +63,6 @@ public class MathProtocol {
 			else
 			{
 				output += "None! Hit enter to continue.";
-				try {
-					CurrentInstance = CurrentClass.newInstance();
-				} catch (InstantiationException | IllegalAccessException e) {
-					out = "An error occurred during class creation.";
-					state = WAITING;
-					return out;
-				}
 				state = REQUEST_METHOD_NAME;
 			}
 			out = output;
@@ -93,9 +86,8 @@ public class MathProtocol {
 					return out;
 				}
 			}
-				
 			try {
-					CurrentInstance = CurrentClass.getConstructors()[0].newInstance(paramsForCtor);
+				CurrentInstance = CurrentClass.getConstructors()[0].newInstance(paramsForCtor);
 			} catch (InstantiationException | IllegalAccessException
 					| IllegalArgumentException | InvocationTargetException
 					| SecurityException e) {
@@ -128,7 +120,7 @@ public class MathProtocol {
 			Method[] methods = CurrentClass.getDeclaredMethods();
 			for(Method m : methods)
 			{
-				if(m.getName().equalsIgnoreCase(MethodName))
+				if(m.getName().equals(MethodName))
 				{
 					requested = m;
 					break;
