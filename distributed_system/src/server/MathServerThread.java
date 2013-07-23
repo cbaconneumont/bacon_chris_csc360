@@ -20,29 +20,29 @@ public class MathServerThread extends Thread {
 	{
 		try
 		{
-		PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-        BufferedReader in = new BufferedReader(
-                    new InputStreamReader(
-                    socket.getInputStream()));
- 
-        String inputLine, outputLine;
-        
-        MathProtocol mp = new MathProtocol();
-        outputLine = mp.processInput(null);
-        out.println(outputLine);
- 
-        while ((inputLine = in.readLine()) != null) 
-        {
-	        outputLine = mp.processInput(inputLine);
+			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+	        BufferedReader in = new BufferedReader(
+	                    new InputStreamReader(
+	                    socket.getInputStream()));
+	 
+	        String inputLine, outputLine;
+	        
+	        MathProtocol mp = new MathProtocol();
+	        outputLine = mp.processInput(null);
 	        out.println(outputLine);
-	        if (outputLine.equals("Bye"))
-	            break;
-        }
-      
-        out.close();
-        in.close();
-        
-        socket.close();
+	 
+	        while ((inputLine = in.readLine()) != null) 
+	        {
+		        outputLine = mp.processInput(inputLine);
+		        out.println(outputLine);
+		        if (outputLine.equals("Bye"))
+		            break;
+	        }
+	      
+	        out.close();
+	        in.close();
+	        
+	        socket.close();
 		}
 		catch(Exception e)
 		{
