@@ -23,4 +23,12 @@ public class RestaurantServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws  ServletException, IOException{
+
+    }
+
+    protected  void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+    }
 }
