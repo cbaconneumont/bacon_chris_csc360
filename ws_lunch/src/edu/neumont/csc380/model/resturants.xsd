@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="lunch" type="lunch"/>
+    <xs:complexType name="menuitem">
+        <xs:attribute type="xs:string" name="name" use="optional"/>
+        <xs:attribute type="xs:double" name="price" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="lunch">
+        <xs:sequence>
+            <xs:element type="restaurant" name="restaurant" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
     <xs:complexType name="restaurant">
         <xs:sequence>
-            <xs:element name="address" type="xs:string" minOccurs="0"/>
-            <xs:element name="menuitems" type="menuItem" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element type="menuitem" name="menuitem" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute type="xs:string" name="name"/>
+        <xs:attribute type="xs:string" name="address"/>
     </xs:complexType>
-
-    <xs:complexType name="menuItem">
-        <xs:sequence>
-            <xs:element name="name" type="xs:string" minOccurs="0"/>
-            <xs:element name="price" type="xs:double"/>
-        </xs:sequence>
-    </xs:complexType>
-
 </xs:schema>
-

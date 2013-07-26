@@ -3,22 +3,21 @@ package edu.neumont.csc380.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for menuItem complex type.
+ * <p>Java class for menuitem complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="menuItem">
+ * &lt;complexType name="menuitem">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="price" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *       &lt;/sequence>
+ *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="price" type="{http://www.w3.org/2001/XMLSchema}double" />
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -27,14 +26,13 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "menuItem", propOrder = {
-        "name",
-        "price"
-})
-public class MenuItem {
+@XmlType(name = "menuitem")
+public class Menuitem {
 
+    @XmlAttribute(name = "name")
     protected String name;
-    protected double price;
+    @XmlAttribute(name = "price")
+    protected Double price;
 
     /**
      * Gets the value of the name property.
@@ -63,16 +61,24 @@ public class MenuItem {
     /**
      * Gets the value of the price property.
      *
+     * @return
+     *     possible object is
+     *     {@link Double }
+     *
      */
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
     /**
      * Sets the value of the price property.
      *
+     * @param value
+     *     allowed object is
+     *     {@link Double }
+     *
      */
-    public void setPrice(double value) {
+    public void setPrice(Double value) {
         this.price = value;
     }
 

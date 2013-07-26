@@ -1,7 +1,10 @@
 
 package edu.neumont.csc380.model;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -21,6 +24,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Lunch_QNAME = new QName("", "lunch");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: edu.neumont.csc380.model
@@ -30,19 +34,28 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link MenuItem }
+     * Create an instance of {@link Lunch }
      *
      */
-    public MenuItem createMenuItem() {
-        return new MenuItem();
+    public Lunch createLunch() {
+        return new Lunch();
     }
 
     /**
      * Create an instance of {@link Restaurant }
      *
      */
-    public Restaurant createRestaurant() {
+    public Restaurant createResturant() {
         return new Restaurant();
     }
+
+    /**
+     * Create an instance of {@link Menuitem }
+     *
+     */
+    public Menuitem createMenuitem() {
+        return new Menuitem();
+    }
+
 
 }
