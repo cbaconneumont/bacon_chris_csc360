@@ -1,5 +1,7 @@
 package edu.neumont.csc380.controller;
 
+import edu.neumont.csc380.Driver;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +23,16 @@ public class RestaurantServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().println("hello");
+        Driver menu = new Driver();
+        response.getWriter().println("Restaurant:");
+        response.getWriter().println(menu.rest.getName());
+        response.getWriter().println(menu.lunch.getRestaurant().toString());
+        response.getWriter().println(menu.rest.getAddress());
+        response.getWriter().println("Menu:");
+        response.getWriter().println(menu.item1.getName());
+        response.getWriter().println(menu.item1.getPrice());
+        response.getWriter().println(menu.item2.getName());
+        response.getWriter().println(menu.item2.getPrice());
     }
 
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws  ServletException, IOException{

@@ -20,9 +20,10 @@ import java.io.FileOutputStream;
  */
 public class Driver {
     ObjectFactory of;
-    Menuitem item1;
-    Menuitem item2;
-    Restaurant rest;
+    public Menuitem item1;
+    public Menuitem item2;
+    public Restaurant rest;
+    public Lunch lunch;
 
     public Driver(){
         of = new ObjectFactory();
@@ -46,7 +47,7 @@ public class Driver {
 
             //when you want to unmarshal, use a jaxb thing and unmarshal it by casting
             Unmarshaller um = jax.createUnmarshaller();
-            Lunch lunch = (Lunch) um.unmarshal(new File("baconthing2.xml"));
+            lunch = (Lunch) um.unmarshal(new File("baconthing2.xml"));
         } catch (Exception e) {
             e.printStackTrace();
         }
