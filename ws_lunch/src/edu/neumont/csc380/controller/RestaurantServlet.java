@@ -14,14 +14,14 @@ import java.io.IOException;
  * Time: 7:10 PM
  * To change this template use File | Settings | File Templates.
  */
-@WebServlet(name = "RestaurantServlet")
+@WebServlet("/Restaurant.do")
 public class RestaurantServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.getWriter().println("hello");
     }
 
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws  ServletException, IOException{
