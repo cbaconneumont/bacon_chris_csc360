@@ -8,8 +8,11 @@ import edu.neumont.csc380.model.Restaurant;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,9 +26,13 @@ public class Driver {
     public Menuitem item1;
     public Menuitem item2;
     public Restaurant rest;
-    public Lunch lunch;
+    public Lunch l;
 
     public Driver(){
+            run();
+    }
+
+    private void run(){
         of = new ObjectFactory();
         item1 = of.createMenuitem();
         item2 = of.createMenuitem();
@@ -34,7 +41,7 @@ public class Driver {
         setMenuItems();
         setRestaurants();
 
-        Lunch l = of.createLunch();
+        l = of.createLunch();
         l.getRestaurant().add(rest);
 
         //get a new instance of jaxbcontext using the correct package name
@@ -47,11 +54,25 @@ public class Driver {
 
             //when you want to unmarshal, use a jaxb thing and unmarshal it by casting
             Unmarshaller um = jax.createUnmarshaller();
-            lunch = (Lunch) um.unmarshal(new File("baconthing2.xml"));
+            l = (Lunch) um.unmarshal(new File("baconthing2.xml"));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(l.getRestaurant().size());
+    }
+
+    public void listRestaurantsWithMenu(HttpServletResponse response){
+        try{
+            response.getWriter().println("Restaurant:");
+            response.getWriter().println(rest.getName());
+            response.getWriter().println(rest.getAddress());
+            response.getWriter().println("Menu:");
+            response.getWriter().println(item1.getName());
+            response.getWriter().println(item1.getPrice());
+            response.getWriter().println(item2.getName());
+            response.getWriter().println(item2.getPrice());
+        }catch(IOException e){
+
+        }
     }
 
     private void setMenuItems(){

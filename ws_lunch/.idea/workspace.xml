@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7056e2db-d1bf-422d-8ec5-d8afb3058164" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/neumont/csc380/controller/OrderServlet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/edu/neumont/csc380/RESTClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/neumont/csc380/Driver.java" afterPath="$PROJECT_DIR$/src/edu/neumont/csc380/Driver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/neumont/csc380/controller/RestaurantServlet.java" afterPath="$PROJECT_DIR$/src/edu/neumont/csc380/controller/RestaurantServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.jsp" afterPath="$PROJECT_DIR$/web/index.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TakeARest.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375140910883" ignored="false" />
+    <file path="/Dummy.txt" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375214274404" ignored="false" />
     <file path="$USER_HOME$/IdeaProjects/baconthing/src/edu/neumont/csc380/model/Restaurant.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1374795144297" ignored="false" />
     <file path="$USER_HOME$/IdeaProjects/baconthing/src/edu/neumont/csc380/control/driver.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1374795414255" ignored="false" />
     <file path="/driver.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1374769633614" ignored="false" />
@@ -15,11 +19,15 @@
     <file path="/resturants.xsd" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1374769990720" ignored="false" />
     <file path="/fragment.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1374858773654" ignored="false" />
     <file path="$USER_HOME$/IdeaProjects/baconthing/src/edu/neumont/csc380/model/MenuItem.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1374795144297" ignored="false" />
-    <file path="/RestaurantServlet.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375144775207" ignored="false" />
+    <file path="/RestaurantServlet.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375222867095" ignored="false" />
     <file path="/MenuItem.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1374883610455" ignored="false" />
     <file path="/Lunch.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1374884342956" ignored="false" />
-    <file path="/Driver.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375144705362" ignored="false" />
+    <file path="/Driver.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375222247244" ignored="false" />
     <file path="/web.xml" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375142266675" ignored="false" />
+    <file path="/RESTClient.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375210809559" ignored="false" />
+    <file path="/index.jsp" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375223297204" ignored="false" />
+    <file path="/OrderServlet.java" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375223831254" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../Neumont/Quarter12/CSC 380/gomez_samantha_CSC380/ws_lunch/web/WEB-INF/web.xml" changelist="7056e2db-d1bf-422d-8ec5-d8afb3058164" time="1375228196555" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +127,7 @@
       <file leaf-file-name="Driver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/Driver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="60" selection-start="1910" selection-end="1910" vertical-scroll-proportion="0.0">
+            <state line="69" column="73" selection-start="2160" selection-end="2160" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -136,11 +144,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RestaurantServlet.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RestaurantServlet.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/controller/RestaurantServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="74" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.6490909">
+            <state line="31" column="76" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/controller/OrderServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="0" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="9" selection-start="462" selection-end="462" vertical-scroll-proportion="0.6335404">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RESTClient.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/RESTClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="68" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,7 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/edu/neumont/csc380/model/Restaurant.java" />
         <option value="$PROJECT_DIR$/src/edu/neumont/csc380/model/ObjectFactory.java" />
         <option value="$PROJECT_DIR$/src/edu/neumont/csc380/model/resturants.xsd" />
@@ -171,8 +209,11 @@
         <option value="$PROJECT_DIR$/src/edu/neumont/csc380/model/Menuitem.java" />
         <option value="$PROJECT_DIR$/src/edu/neumont/csc380/model/Lunch.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/edu/neumont/csc380/RESTClient.java" />
         <option value="$PROJECT_DIR$/src/edu/neumont/csc380/Driver.java" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/src/edu/neumont/csc380/controller/RestaurantServlet.java" />
+        <option value="$PROJECT_DIR$/src/edu/neumont/csc380/controller/OrderServlet.java" />
       </list>
     </option>
   </component>
@@ -218,7 +259,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -333,6 +373,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -352,10 +393,28 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
+    <property name="dynamic.classpath" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 7.0">
+    <configuration default="false" name="RESTClient" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="edu.neumont.csc380.RESTClient" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="TakeARest" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -463,9 +522,15 @@
         </option>
       </method>
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7.0" />
+      <item index="1" class="java.lang.String" itemvalue="Application.RESTClient" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.RESTClient" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -498,22 +563,22 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24934107" sideWeight="0.5005574" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15955175" sideWeight="0.27201784" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15635005" sideWeight="0.64214045" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15955175" sideWeight="0.59643257" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35785952" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40356743" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -594,11 +659,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/controller/RestaurantServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="7" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="20" column="74" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/model/Restaurant.java">
@@ -611,36 +683,15 @@
     <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/controller/RestaurantServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="74" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/model/Restaurant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="212" selection-end="212" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/controller/RestaurantServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="74" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="20" column="74" selection-start="459" selection-end="459" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/model/ObjectFactory.java">
@@ -657,24 +708,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="7" selection-start="300" selection-end="300" vertical-scroll-proportion="0.30106258">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
-        <state />
-      </provider>
-      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="88" selection-start="418" selection-end="418" vertical-scroll-proportion="0.35619047">
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
+        <state />
       </provider>
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
         <state />
@@ -687,22 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/model/Restaurant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="13" selection-start="946" selection-end="946" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/Driver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="60" selection-start="1910" selection-end="1910" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/model/resturants.xsd">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="12" selection-start="932" selection-end="932" vertical-scroll-proportion="0.0">
@@ -710,9 +738,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/model/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="13" selection-start="946" selection-end="946" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/RESTClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="68" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="73" selection-start="2160" selection-end="2160" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/controller/OrderServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="636" selection-end="636" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/edu/neumont/csc380/controller/RestaurantServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="74" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.6490909">
+        <state line="31" column="76" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="9" selection-start="462" selection-end="462" vertical-scroll-proportion="0.6335404">
           <folding />
         </state>
       </provider>

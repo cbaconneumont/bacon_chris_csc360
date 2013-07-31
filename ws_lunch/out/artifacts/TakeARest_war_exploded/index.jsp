@@ -1,3 +1,4 @@
+<%@ page import="edu.neumont.csc380.Driver" %>
 <%--
   Created by IntelliJ IDEA.
   User: sgomez
@@ -8,9 +9,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title></title>
+        <title>Restaurant Order</title>
     </head>
 
     <body>
+         <%
+             Driver menu = new Driver();
+             menu.listRestaurantsWithMenu(response);
+         %>
+
+        <form method="POST" action="/PlaceOrder">
+            <p>What would you like to order?</p>
+            <input name="order" type="text"/>
+            <input type="submit" value="Place Order"/>
+        </form>
     </body>
 </html>
