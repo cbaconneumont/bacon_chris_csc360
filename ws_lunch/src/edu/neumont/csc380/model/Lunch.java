@@ -2,12 +2,9 @@
 package edu.neumont.csc380.model;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.*;
@@ -69,45 +66,4 @@ public class Lunch {
         }
         return this.restaurant;
     }
-
-
-    /**
-     * CODE THAT SHOWS HOW THIS SHIT WORKS
-     *
-     * //initialize the object factory
-     * //initialize objects, give them values
-     */
-    public void oewhfroiuew() throws JAXBException, FileNotFoundException {
-     ObjectFactory of = new ObjectFactory();
-     Menuitem item1 = of.createMenuitem();
-     Menuitem item2 = of.createMenuitem();
-
-     item1.setName("Pork");
-     item1.setPrice(12.99);                 1
-     item2.setName("Steak");
-     item2.setPrice(15.99);
-
-     Restaurant rest = of.createResturant();
-     rest.setName("Lamb's Grill");
-     rest.setAddress("123 fake st");
-     rest.getMenuitem().add(item1);
-     rest.getMenuitem().add(item2);
-
-     Lunch l = of.createLunch();
-     l.getRestaurant().add(rest);
-
-     //get a new instance of jaxbcontext using the correct package name
-     JAXBContext jax = JAXBContext.newInstance("edu.neumont.csc380.model");
-
-     //marshal this shit to whatever xml file
-     Marshaller m = jax.createMarshaller();
-     m.marshal(l, new FileOutputStream("baconthing2.xml"));
-
-     //when you want to unmarshal, use a jaxb thing and unmarshal it by casting
-     Unmarshaller um = jax.createUnmarshaller();
-     Lunch lunch = (Lunch) um.unmarshal(new File("baconthing2.xml"));
-
-     System.out.println(lunch.getRestaurant().size());
-    }
-
 }
