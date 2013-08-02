@@ -1,8 +1,15 @@
 
 package edu.neumont.csc380.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.*;
 
 
@@ -69,12 +76,14 @@ public class Lunch {
      *
      * //initialize the object factory
      * //initialize objects, give them values
-     * ObjectFactory of = new ObjectFactory();
+     */
+    public void oewhfroiuew() throws JAXBException, FileNotFoundException {
+     ObjectFactory of = new ObjectFactory();
      Menuitem item1 = of.createMenuitem();
      Menuitem item2 = of.createMenuitem();
 
      item1.setName("Pork");
-     item1.setPrice(12.99);
+     item1.setPrice(12.99);                 1
      item2.setName("Steak");
      item2.setPrice(15.99);
 
@@ -99,6 +108,6 @@ public class Lunch {
      Lunch lunch = (Lunch) um.unmarshal(new File("baconthing2.xml"));
 
      System.out.println(lunch.getRestaurant().size());
-     */
+    }
 
 }

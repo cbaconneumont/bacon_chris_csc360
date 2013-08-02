@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<soap:Envelope
+        xmlns:soap="http://www.w3.org/2001/12/soap-envelope"
+        soap:encodingStyle="http://www.w3.org/2001/12/soap-encoding">
+
+    <soap:Body xmlns:rr="http://www.example.org/bacon">
+        <rr:GetRestaurantsResponse>
+            <rr:restaurant>
+                <rr:name>Lamb's Grill</rr:name>
+            </rr:restaurant>
+        </rr:GetRestaurantsResponse>
+    </soap:Body>
+
+</soap:Envelope>

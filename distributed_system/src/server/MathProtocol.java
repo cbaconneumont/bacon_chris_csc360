@@ -144,10 +144,10 @@ public class MathProtocol {
 			else
 			{
 				Class[] params = requested.getParameterTypes();
-				output = "The method requires the following as parameters (please enter them separated by commas [eg 12, 13]): ";
+				output = "The method requires the following as parameters (Enter commas between different paramaters. Write new objects in the form [new edu.csc380.TestClass(12,\"somestringvalue\");14] without the brackets. (for example, if you were trying to use a class called 'edu.MathLogic' and the MathLogic constructor took in a Logic object and an int, and the logic constructor needed a boolean as an input, the input string would looke like \"new Logic(true),16\": ";
 				for(Class param : params)
 				{
-					output += param.getName() + ", ";
+					output += param.getConstructors()[0].toString() + ", ";
 				}
 				output = output.substring(0, output.length() - 2);
 				out = output;

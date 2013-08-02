@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lunch>
+    <restaurant name="Lamb's Grill" address="123 fake st">
+        <menuitem name="Pork" price="12.99"/>
+        <menuitem name="Steak" price="15.99"/>
+    </restaurant>
+</lunch>
